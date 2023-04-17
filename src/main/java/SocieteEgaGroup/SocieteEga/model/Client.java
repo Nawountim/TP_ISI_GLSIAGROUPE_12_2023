@@ -39,6 +39,89 @@ public class Client {
     @Column(name = "nationalite")
     private String nationalite;
 
-    // Getters and setters
+    // Getters
+    public Long getId() {
+        return id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public LocalDate getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public String getCourriel() {
+        return courriel;
+    }
+
+    public String getNationalite() {
+        return nationalite;
+    }
+
+    // Setters
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setDateNaissance(LocalDate dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public void setCourriel(String courriel) {
+        this.courriel = courriel;
+    }
+
+    public void setNationalite(String nationalite) {
+        this.nationalite = nationalite;
+    }
+
+    public  Client() {
+
+    }
+
+    public Client(String nom, String prenom, LocalDate dateNaissance, String sexe, String adresse, String telephone, String courriel, String nationalite) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+        this.sexe = sexe;
+        this.adresse = adresse;
+        this.telephone = telephone;
+        this.courriel = courriel;
+        this.nationalite = nationalite;
+    }
 }
 

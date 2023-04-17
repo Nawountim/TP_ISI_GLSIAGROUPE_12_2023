@@ -14,8 +14,33 @@ public class TypeCompte {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "libelle")
-    private String libelle;
+    @Column(name = "nom")
+    private String nom;
 
-    // Getters and setters
+    // constructeurs
+
+    public TypeCompte() {}
+
+    public TypeCompte(String nom) {
+        this.nom = nom;
+    }
+
+    // getters et setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 }
+

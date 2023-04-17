@@ -32,7 +32,7 @@ public class CompteResource {
 
     @PostMapping("")
     public ResponseEntity<Compte> createCompte(@RequestBody Compte compte) {
-        Compte savedCompte = compteService.saveCompte(compte);
+        Compte savedCompte = compteService.createCompte(compte);
         return ResponseEntity.created(URI.create("/api/comptes/" + savedCompte.getNumeroCompte())).body(savedCompte);
     }
 
