@@ -51,8 +51,30 @@ public class CompteService {
     }
 
     public Compte updateCompte(String numeroCompte, Compte compte) {
+        Compte compteEnBase = getCompteByNumero(numeroCompte);
+        if (compteEnBase != null) {
+            compteEnBase.setSolde(compte.getSolde());
+            // Mettre à jour les autres propriétés du compte si nécessaire
+            //compteEnBase.setDateCreation(LocalDate.now()); // Mise à jour de la date de dernière modification
+            compteRepository.save(compteEnBase); // Sauvegarde du compte modifié en base de données
+        }
+        return compteEnBase;
+    }
+    public Compte updateSoldeCompte(Compte compte) {
+        compteRepository.save(compte);
         return compte;
     }
+
+
+
+    public Compte getStatistiquesCompte(String numeroCompte) {
+        Compte compte = compteRepository.findByNumeroCompte(numeroCompte);
+        Compte stats = new Compte();
+        stats.setDernierDepot(compte.getDernierDepot());
+        stats.setDernierRetrait(compte.getDernierRetrait());
+        return stats;
+    }
+
 
     public Compte getCompteByNumeroCompte(String numeroCompte) {
         return null;

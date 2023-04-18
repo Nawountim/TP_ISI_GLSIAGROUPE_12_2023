@@ -1,6 +1,7 @@
 package SocieteEgaGroup.SocieteEga;
 
 import SocieteEgaGroup.SocieteEga.model.Client;
+import SocieteEgaGroup.SocieteEga.model.Compte;
 import SocieteEgaGroup.SocieteEga.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,13 @@ public class ClientRessource {
         }
         return new ResponseEntity<>(client, HttpStatus.OK);
     }
+
+    @GetMapping("/statistiques/nombreClient")
+    public String getNombreComptes() {
+        List<Client> clt = clientService.getAllClients();
+        return "Il y a actuellement " + clt.size() + " comptes dans le système.";
+    }
+
 
     @PostMapping("/add")
     public ResponseEntity<Client> createClient(@RequestBody Client client) {

@@ -24,6 +24,12 @@ public class Compte {
     @Column(name = "date_creation")
     private LocalDate dateCreation;
 
+    @Column(name = "date_dernier_depot")
+    private LocalDate dernierDepot;
+
+    @Column(name = "date_dernier_retrait")
+    private LocalDate dernierRetrait;
+
     @ManyToOne
     @JoinColumn(name = "id_type_compte")
     private TypeCompte typeCompte;
@@ -66,9 +72,26 @@ public class Compte {
         return dateCreation;
     }
 
+    public LocalDate getDernierDepot() {
+        return dernierDepot;
+    }
+
+    public LocalDate getDernierRetrait() {
+        return dernierRetrait;
+    }
+
     public void setDateCreation(LocalDate dateCreation) {
         this.dateCreation = dateCreation;
     }
+
+    public void setDernierDepot(LocalDate dernierDepot) {
+        this.dernierDepot = dernierDepot;
+    }
+
+    public void setDernierRetrait(LocalDate dernierRetrait) {
+        this.dernierRetrait = dernierRetrait;
+    }
+
 
     public TypeCompte getTypeCompte() {
         return typeCompte;
