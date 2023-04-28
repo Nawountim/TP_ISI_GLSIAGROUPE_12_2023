@@ -1,13 +1,13 @@
-package SocieteEgaGroup.SocieteEga;
+package TPISIGLSI.CrudApi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SocieteEgaApplication {
+public class CrudApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SocieteEgaApplication.class, args);
+		SpringApplication.run(CrudApiApplication.class, args);
 	}
 
 }
