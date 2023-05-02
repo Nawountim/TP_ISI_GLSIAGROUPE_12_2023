@@ -79,4 +79,65 @@ public class CompteService {
     public Compte getCompteByNumeroCompte(String numeroCompte) {
         return null;
     }
+
+     public Compte Versement(String numeroCompte, Integer montant) {
+        Compte compteToUpdate = compteRepository.findByNumeroCompte(numeroCompte);
+
+        double nouveauSolde = compteToUpdate.getSolde() + montant;
+        compteToUpdate.setSolde(nouveauSolde);
+        compteRepository.save(compteToUpdate);
+
+        return compteToUpdate;
+    }
+
+    public Compte Retrait(String numeroCompte, Integer montant) {
+        Compte compteToUpdate = compteRepository.findByNumeroCompte(numeroCompte);
+
+        double nouveauSolde = compteToUpdate.getSolde() - montant;
+        compteToUpdate.setSolde(nouveauSolde);
+        compteRepository.save(compteToUpdate);
+
+        return compteToUpdate;
+    }
+
+    public Compte Virement(String numCompteSrc,String numCompteDest,double  montant) {
+        Compte compteSrc = compteRepository.findByNumeroCompte(numCompteSrc);
+
+        Compte compteDst = compteRepository.findByNumeroCompte(numCompteDest);
+
+
+        double nouveauSoldeSrc = compteSrc.getSolde() - montant;
+        double nouveauSoldeDst = compteDst.getSolde() + montant;
+
+        compteSrc.setSolde(nouveauSoldeSrc);
+        compteDst.setSolde(nouveauSoldeDst);
+        compteRepository.save(compteSrc);
+        compteRepository.save(compteDst);
+
+        return compteSrc;
+    }
+
+
+
+
+    public void effectuerVirement(String numCompteSrc, String numCompteDest, double montant) {
+        Compte compteSrc = compteRepository.findByNumeroCompte(numCompteSrc);
+        Compte compteDest = compteRepository.findByNumeroCompte(numCompteDest);
+        if(compteSrc == null || compteDest == null) {
+            throw new IllegalArgumentException("Un ou plusieurs comptes n'existent pas");
+        }
+        if(compteSrc.getSolde() < montant) {
+            throw new IllegalArgumentException("Solde insuffisant");
+        }
+        double nouveauSoldeSrc = compteSrc.getSolde() - montant;
+        double nouveauSoldeDest = compteDest.getSolde() + montant;
+        compteSrc.setSolde(nouveauSoldeSrc);
+        compteDest.setSolde(nouveauSoldeDest);
+        compteRepository.save(compteSrc);
+        compteRepository.save(compteDest);
+    }
+
+
+
+
 }
